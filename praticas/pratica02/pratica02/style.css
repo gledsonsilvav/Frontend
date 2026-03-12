@@ -1,0 +1,393 @@
+/* Guia de Estilos e Resets */
+:root {
+    --primary-color: #2563eb;   /* Azul Tech */
+    --secondary-color: #f59e0b; /* Laranja Desconto */
+    --neutral-color: #f3f4f6;   /* Cinza Claro */
+    --text-dark: #1f2937;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--neutral-color);
+    color: var(--text-dark);
+}
+
+h1, h2, h3, .logo {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Header com Flexbox */
+.main-header {
+    display: flex;
+    justify-content: space-between; /* Separa logo do carrinho */
+    align-items: center;            /* Alinhamento vertical */
+    padding: 1rem 5%;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.logo span { color: var(--primary-color); }
+
+.cart-count {
+    background: var(--secondary-color);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-size: 0.8rem;
+}
+
+/* Hero Section com Flexbox Centralizado */
+.hero {
+    height: 300px;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center; /* Centro horizontal */
+    align-items: center;     /* Centro vertical */
+    color: white;
+    text-align: center;
+}
+
+/* Grid de Produtos com Flex Wrap */
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;        /* Quebra linha automática */
+    gap: 20px;              /* Espaçamento entre cards */
+    padding: 40px 5%;
+    justify-content: center;
+}
+
+/* Card Interno (Flex Column) */
+.product-card {
+    background: white;
+    width: 300px;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column; /* Itens empilhados */
+    gap: 12px;
+    transition: transform 0.3s;
+}
+
+.product-card:hover { transform: translateY(-5px); }
+
+.product-image {
+    height: 200px;
+    background: #eee;
+    border-radius: 4px;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.current-price {
+    display: block;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.add-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Rodapé */
+.main-footer {
+    background: #1f2937;
+    color: white;
+    padding: 2rem 5%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+/* Estilização das Imagens dos Produtos */
+.product-img {
+    width: 100%;           /* Ocupa toda a largura do card */
+    height: 200px;         /* Altura fixa para manter o padrão */
+    object-fit: cover;     /* Corta a imagem sem distorcer para preencher o espaço */
+    border-radius: 6px;    /* Arredonda levemente as bordas */
+    margin-bottom: 10px;
+}
+
+/* Remover o estilo antigo da div se ainda estiver lá */
+.product-image { display: none; }
+
+/* Container Principal Detalhes */
+.product-detail-container {
+    display: flex;
+    padding: 50px 5%;
+    gap: 40px;
+    flex-wrap: wrap; /* Responsivo para telas menores */
+}
+
+/* Galeria Lateral */
+.gallery-section {
+    display: flex;
+    flex: 2; /* Ocupa mais espaço que o texto */
+    gap: 15px;
+}
+
+.thumbnails {
+    display: flex;
+    flex-direction: column; /* Fotos pequenas empilhadas */
+    gap: 10px;
+}
+
+.thumbnails img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 4px;
+}
+
+.thumbnails img:hover {
+    border-color: var(--primary-color);
+}
+
+.main-photo {
+    flex-grow: 1;
+}
+
+.main-photo img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain; /* Não corta a imagem principal */
+    background: #fff;
+    border-radius: 8px;
+}
+
+/* Seção de Texto */
+.info-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.price-tag {
+    font-size: 2rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.buy-now-btn {
+    background: #10b981; /* Verde Sucesso */
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+/* Estilo padrão das miniaturas */
+.thumb {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent; /* Reserva o espaço da borda */
+    opacity: 0.6; /* Deixa as não selecionadas mais apagadinhas */
+}
+
+/* Estilo da miniatura quando estiver em destaque */
+.thumb.active-thumb {
+    opacity: 1;
+    border-color: #ff6600; /* Cor de destaque (ajuste se quiser) */
+    transform: scale(1.05);
+}
+
+/* Estilo do Menu de Navegação */
+.sub-menu {
+    background-color: #f8f9fa; /* Cor de fundo leve */
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.sub-menu ul {
+    list-style: none;
+    display: flex;             /* Coloca os itens em linha */
+    justify-content: center;   /* Centraliza o menu na tela */
+    gap: 30px;                 /* Espaço entre os itens */
+    margin: 0;
+    padding: 0;
+}
+
+.sub-menu a {
+    text-decoration: none;
+    color: #333;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.sub-menu a:hover {
+    color: #007bff; /* Cor de destaque ao passar o mouse */
+}
+
+.news-section {
+    padding: 40px 5%;
+    background-color: #f4f4f4;
+}
+
+.section-title {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+.news-carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto; /* Permite arrastar para o lado */
+    padding-bottom: 20px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin; /* Barra de scroll discreta */
+}
+
+.news-card {
+    min-width: 300px; /* Largura de cada notícia */
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    scroll-snap-align: start;
+    transition: transform 0.3s;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+}
+
+.news-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.news-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.news-content {
+    padding: 15px;
+}
+
+.news-source {
+    font-size: 12px;
+    color: #007bff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.news-content h4 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.news-content p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.social {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.social a {
+    color: #fff; /* Cor inicial dos ícones */
+    font-size: 24px; /* Tamanho do ícone */
+    transition: transform 0.3s, color 0.3s;
+    text-decoration: none;
+}
+
+/* Cores específicas ao passar o mouse (hover) */
+.social a[aria-label="Instagram"]:hover {
+    color: #E1306C;
+    transform: scale(1.2);
+}
+
+.social a[aria-label="Twitter"]:hover {
+    color: #1DA1F2;
+    transform: scale(1.2);
+}
+
+.social a[aria-label="Facebook"]:hover {
+    color: #1877F2;
+    transform: scale(1.2);
+}
+
+.social a[aria-label="YouTube"]:hover {
+    color: #FF0000;
+    transform: scale(1.2);
+}
+
+/* Estilo base do botão do carrinho */
+.cart-button {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Remove o sublinhado do link */
+    background-color: #f0f0f0; /* Fundo sutil */
+    padding: 8px 15px;
+    border-radius: 50px; /* Formato de pílula */
+    transition: all 0.3s ease; /* Suaviza todas as mudanças */
+    position: relative;
+    color: #333;
+    border: 1px solid transparent;
+}
+
+.cart-icon {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.cart-count {
+    background-color: #ff4757; /* Vermelho vibrante para o contador */
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 7px;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+/* Efeito de Destaque ao passar o mouse (Hover) */
+.cart-button:hover {
+    background-color: #fff;
+    border-color: #007bff; /* Borda azul de destaque */
+    transform: translateY(-2px); /* Sobe levemente */
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2); /* Sombra suave azulada */
+}
+
+/* Efeito ao clicar (Active) */
+.cart-button:active {
+    transform: scale(0.95); /* Efeito de 'pressionar' botão */
+}
