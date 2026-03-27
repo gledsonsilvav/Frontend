@@ -1,23 +1,23 @@
-// src/App.tsx
 import { Container } from './components/Container';
 import { Heading } from './components/Heading';
-import { Timer, History } from 'lucide-react'; // Ícones para ilustrar
+import { Timer, History } from 'lucide-react'; 
 import { Logo } from './components/Logo';
 import { Menu } from './components/Menu';
 import { CountDown } from './components/CountDown';
+
 import './styles/theme.css';
 import './styles/global.css';
 
 export function App() {
   return (
     <>
-      {/* Seção de Cabeçalho */}
-      <Container>
+           <Container>
         <Heading>
           Ignite Timer
           <Timer size={24} />
         </Heading>
       </Container>
+
       <Container>
         <Logo />
       </Container>
@@ -30,17 +30,35 @@ export function App() {
         <CountDown />
       </Container>
 
-      {/* Seção de Conteúdo Principal */}
+      {/* Seção de Conteúdo Principal (Formulário Refatorado) */}
       <Container>
-        <div style={{ 
-          backgroundColor: 'var(--gray-800)', 
-          padding: '4rem', 
-          borderRadius: '8px',
-          textAlign: 'center' 
-        }}>
-          <h2>Área do Cronômetro</h2>
-          <p style={{ color: 'var(--text-muted)' }}>O formulário virá aqui!</p>
-        </div>
+        <form className='form' action=''>
+          {/* Grupo 1: Label e Input conectado por id/htmlFor */}
+          <div className='formRow'>
+            <label htmlFor='taskInput'>Tarefa</label>
+            <input 
+              id='taskInput' 
+              type='text' 
+              placeholder='No que você vai trabalhar?' 
+            />
+          </div>
+
+          {/* Grupo 2: Texto de apoio */}
+          <div className='formRow'>
+            <p>Desenvolvendo componentes React com foco.</p>
+          </div>
+
+          {/* Grupo 3: Ciclos realizados */}
+          <div className='formRow'>
+            <p>Ciclos realizados</p>
+            <p>○ ○ ○ ○ ○ ○ ○</p>
+          </div>
+
+          {/* Grupo 4: Botão de Ação */}
+          <div className='formRow'>
+            <button type="submit">Iniciar Foco</button>
+          </div>
+        </form>
       </Container>
 
       {/* Seção de Rodapé ou Histórico */}
