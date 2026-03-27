@@ -39,10 +39,11 @@ export function App() {
           {/* Grupo 1: Usando o componente Tipado DefaultInput */}
           <div className='formRow'>
             <DefaultInput 
-              id='taskInput' 
-              type='text' 
-              placeholder='No que você vai trabalhar?' 
-              required // Exemplo de prop nativa que o TS agora aceita
+            id='taskInput' 
+            type='text' 
+            labelText='Tarefa' // <--- ADICIONE ESTA LINHA AQUI!
+           placeholder='No que você vai trabalhar?' 
+            required 
             />
           </div>
 

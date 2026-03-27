@@ -1,17 +1,23 @@
 import React from 'react';
 
-// Criamos o tipo combinando nosso ID obrigatório com as props nativas do input
 type DefaultInputProps = {
   id: string;
+  labelText: string; // Nova prop obrigatória
 } & React.ComponentProps<'input'>;
 
-// Desestruturamos o id e o type. 
-// O restante das props (placeholder, value, etc) ficam guardadas no objeto 'props'
-export function DefaultInput({ id, type, ...props }: DefaultInputProps) {
+export function DefaultInput({ 
+  id, 
+  type, 
+  labelText, 
+  ...rest // 1. Captura todo o resto (placeholder, disabled, etc)
+}: DefaultInputProps) {
   return (
     <>
-      <label htmlFor={id}>Tarefa</label>
-      <input id={id} type={type} {...props} />
+      {/* Agora o texto da label vem da prop labelText */}
+      <label htmlFor={id}>{labelText}</label>
+      
+      {/* 2. O {...rest} despeja automaticamente todas as outras props aqui */}
+      <input id={id} type={type} {...rest} />
     </>
   );
 }
