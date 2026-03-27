@@ -1,11 +1,12 @@
 import { Container } from './components/Container';
 import { Heading } from './components/Heading';
-import { Timer, History } from 'lucide-react'; 
+import { Timer, History, PlayCircleIcon, StopCircleIcon } from 'lucide-react'; 
 import { Logo } from './components/Logo';
 import { Menu } from './components/Menu';
 import { CountDown } from './components/CountDown';
 import { DefaultInput } from './components/DefaultInput';
-import { Cycles } from './components/Cycles'; // <-- Novo Componente importado
+import { Cycles } from './components/Cycles';
+import { DefaultButton } from './components/DefaultButton'; // 1. Importado
 
 import './styles/theme.css';
 import './styles/global.css';
@@ -13,30 +14,16 @@ import './styles/global.css';
 export function App() {
   return (
     <>
-      {/* Seção de Cabeçalho */}
       <Container>
-        <Heading>
-          Ignite Timer
-          <Timer size={24} />
-        </Heading>
+        <Heading>Ignite Timer <Timer size={24} /></Heading>
       </Container>
 
-      <Container>
-        <Logo />
-      </Container>
-      
-      <Container>
-        <Menu />
-      </Container>
+      <Container><Logo /></Container>
+      <Container><Menu /></Container>
+      <Container><CountDown /></Container>
 
-      <Container>
-        <CountDown />
-      </Container>
-
-      {/* Seção de Conteúdo Principal (Formulário) */}
       <Container>
         <form className='form' action=''>
-          
           <div className='formRow'>
             <DefaultInput 
               id='taskInput' 
@@ -51,23 +38,29 @@ export function App() {
             <p>Desenvolvendo componentes React com foco.</p>
           </div>
 
-          {/* Substituído o HTML antigo pelo componente Cycles */}
           <div className='formRow'>
             <Cycles />
           </div>
 
+          {/* 2. Substituindo o botão antigo pelos novos botões dinâmicos */}
           <div className='formRow'>
-            <button type="submit">Iniciar Foco</button>
+            <DefaultButton 
+              icon={<PlayCircleIcon />} 
+              color='green' 
+              type="submit" 
+            />
+            
+            <DefaultButton 
+              icon={<StopCircleIcon />} 
+              color='red' 
+              type="button" 
+            />
           </div>
         </form>
       </Container>
 
-      {/* Seção de Rodapé ou Histórico */}
       <Container>
-        <Heading>
-          Histórico
-          <History size={24} />
-        </Heading>
+        <Heading>Histórico <History size={24} /></Heading>
       </Container>
     </>
   );
