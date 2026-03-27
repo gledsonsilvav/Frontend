@@ -1,23 +1,17 @@
 import React from 'react';
+import styles from './styles.module.css'; // 1. Importe aqui!
 
 type DefaultInputProps = {
   id: string;
-  labelText: string; // Nova prop obrigatória
+  labelText: string;
 } & React.ComponentProps<'input'>;
 
-export function DefaultInput({ 
-  id, 
-  type, 
-  labelText, 
-  ...rest // 1. Captura todo o resto (placeholder, disabled, etc)
-}: DefaultInputProps) {
+export function DefaultInput({ id, type, labelText, ...rest }: DefaultInputProps) {
   return (
     <>
-      {/* Agora o texto da label vem da prop labelText */}
       <label htmlFor={id}>{labelText}</label>
-      
-      {/* 2. O {...rest} despeja automaticamente todas as outras props aqui */}
-      <input id={id} type={type} {...rest} />
+      {/* 2. Aplique a className aqui */}
+      <input className={styles.input} id={id} type={type} {...rest} />
     </>
   );
 }
