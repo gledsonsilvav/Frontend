@@ -4,6 +4,7 @@ import { Timer, History } from 'lucide-react';
 import { Logo } from './components/Logo';
 import { Menu } from './components/Menu';
 import { CountDown } from './components/CountDown';
+import { DefaultInput } from './components/DefaultInput'; // <-- Novo Componente
 
 import './styles/theme.css';
 import './styles/global.css';
@@ -11,7 +12,8 @@ import './styles/global.css';
 export function App() {
   return (
     <>
-           <Container>
+      {/* Seção de Cabeçalho */}
+      <Container>
         <Heading>
           Ignite Timer
           <Timer size={24} />
@@ -33,13 +35,14 @@ export function App() {
       {/* Seção de Conteúdo Principal (Formulário Refatorado) */}
       <Container>
         <form className='form' action=''>
-          {/* Grupo 1: Label e Input conectado por id/htmlFor */}
+          
+          {/* Grupo 1: Usando o componente Tipado DefaultInput */}
           <div className='formRow'>
-            <label htmlFor='taskInput'>Tarefa</label>
-            <input 
+            <DefaultInput 
               id='taskInput' 
               type='text' 
               placeholder='No que você vai trabalhar?' 
+              required // Exemplo de prop nativa que o TS agora aceita
             />
           </div>
 
