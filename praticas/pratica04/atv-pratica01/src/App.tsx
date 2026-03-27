@@ -4,7 +4,8 @@ import { Timer, History } from 'lucide-react';
 import { Logo } from './components/Logo';
 import { Menu } from './components/Menu';
 import { CountDown } from './components/CountDown';
-import { DefaultInput } from './components/DefaultInput'; // <-- Novo Componente
+import { DefaultInput } from './components/DefaultInput';
+import { Cycles } from './components/Cycles'; // <-- Novo Componente importado
 
 import './styles/theme.css';
 import './styles/global.css';
@@ -32,33 +33,29 @@ export function App() {
         <CountDown />
       </Container>
 
-      {/* Seção de Conteúdo Principal (Formulário Refatorado) */}
+      {/* Seção de Conteúdo Principal (Formulário) */}
       <Container>
         <form className='form' action=''>
           
-          {/* Grupo 1: Usando o componente Tipado DefaultInput */}
           <div className='formRow'>
             <DefaultInput 
-            id='taskInput' 
-            type='text' 
-            labelText='Tarefa' // <--- ADICIONE ESTA LINHA AQUI!
-           placeholder='No que você vai trabalhar?' 
-            required 
+              id='taskInput' 
+              type='text' 
+              labelText='Tarefa'
+              placeholder='No que você vai trabalhar?' 
+              required 
             />
           </div>
 
-          {/* Grupo 2: Texto de apoio */}
           <div className='formRow'>
             <p>Desenvolvendo componentes React com foco.</p>
           </div>
 
-          {/* Grupo 3: Ciclos realizados */}
+          {/* Substituído o HTML antigo pelo componente Cycles */}
           <div className='formRow'>
-            <p>Ciclos realizados</p>
-            <p>○ ○ ○ ○ ○ ○ ○</p>
+            <Cycles />
           </div>
 
-          {/* Grupo 4: Botão de Ação */}
           <div className='formRow'>
             <button type="submit">Iniciar Foco</button>
           </div>
