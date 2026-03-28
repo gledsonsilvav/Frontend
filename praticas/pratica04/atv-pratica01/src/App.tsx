@@ -5,32 +5,53 @@ import { CountDown } from './components/CountDown';
 import { DefaultInput } from './components/DefaultInput';
 import { Cycles } from './components/Cycles';
 import { DefaultButton } from './components/DefaultButton';
-import { PlayCircleIcon } from 'lucide-react';
-import { Footer } from './components/Footer'; // 1. Importado!
+import { PlayCircleIcon, Rocket } from 'lucide-react'; // Adicionei o ícone Rocket para estilo
+import { Footer } from './components/Footer';
 
 import './styles/theme.css';
 import './styles/global.css';
 
 export function App() {
+  // Função para evitar que a página recarregue ao clicar no botão de Iniciar
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    alert("🚀 Ciclo Iniciado com Sucesso!");
+  };
+
   return (
     <>
-      <Container><Logo /></Container>
-      <Container><Menu /></Container>
-      <Container><CountDown /></Container>
-
+      {/* Cabeçalho com Logo e Menu */}
       <Container>
-        <form className='form' action=''>
+        <Logo />
+      </Container>
+      
+      <Container>
+        <Menu />
+      </Container>
+
+      {/* Área do Contador principal */}
+      <Container>
+        <CountDown />
+      </Container>
+
+      {/* Formulário de Tarefas personalizado */}
+      <Container>
+        <form className='form' onSubmit={handleSubmit}>
           <div className='formRow'>
             <DefaultInput
-              labelText='Tarefa'
+              labelText='Qual sua próxima missão?'
               id='taskInput'
               type='text'
-              placeholder='No que você vai trabalhar?'
+              placeholder='Ex: Estudar React Hooks...'
             />
           </div>
 
           <div className='formRow'>
-            <p>Desenvolvendo componentes React com foco.</p>
+            {/* Texto com cor secundária do nosso novo tema */}
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1.4rem', textAlign: 'center' }}>
+              <Rocket size={16} style={{ verticalAlign: 'middle', marginRight: '8px', color: 'var(--primary)' }} />
+              Desenvolvendo componentes React com foco total.
+            </p>
           </div>
 
           <div className='formRow'>
@@ -38,13 +59,18 @@ export function App() {
           </div>
 
           <div className='formRow'>
-            {/* Mantemos apenas o botão verde de Iniciar */}
-            <DefaultButton icon={<PlayCircleIcon />} color="green" type="submit" />
+            {/* O botão agora usará nossa cor --primary (Rosa Neon) automaticamente 
+                se o componente DefaultButton estiver usando as classes do CSS global */}
+            <DefaultButton 
+              icon={<PlayCircleIcon />} 
+              title="COMEÇAR JORNADA"
+              type="submit" 
+            />
           </div>
         </form>
       </Container>
 
-      {/* 2. O Rodapé finalizando a página */}
+      {/* Rodapé finalizando a página */}
       <Container>
         <Footer />
       </Container>
