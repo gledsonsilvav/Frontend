@@ -1,10 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { App } from './App' // Verifique se o nome está correto
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { App } from './App.tsx';
 
-// Isso aqui precisa bater com o id="root" que está no seu index.html
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+// O "!" após o getElementById garante ao TS que o elemento 'root' realmente existe no seu HTML
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
     <App />
-  </React.StrictMode>,
-)
+  </StrictMode>,
+);
