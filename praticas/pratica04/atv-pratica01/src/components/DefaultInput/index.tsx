@@ -1,17 +1,17 @@
-import React from 'react';
-import styles from './styles.module.css'; // 1. Importe aqui!
-
-type DefaultInputProps = {
-  id: string;
+import { forwardRef, type InputHTMLAttributes } from 'react';
+interface DefaultInputProps extends InputHTMLAttributes<HTMLInputElement> {
   labelText: string;
-} & React.ComponentProps<'input'>;
-
-export function DefaultInput({ id, type, labelText, ...rest }: DefaultInputProps) {
-  return (
-    <>
-      <label htmlFor={id}>{labelText}</label>
-      {/* 2. Aplique a className aqui */}
-      <input className={styles.input} id={id} type={type} {...rest} />
-    </>
-  );
 }
+
+// O forwardRef recebe o tipo do elemento (HTMLInputElement) e o tipo das props
+export const DefaultInput = forwardRef<HTMLInputElement, DefaultInputProps>(
+  ({ labelText, ...props }, ref) => {
+    return (
+      <div className='formRow'>
+        <label htmlFor={props.id}>{labelText}</label>
+        {/* Aqui a mágica acontece: a ref é conectada ao input real */}
+        <input {...props} ref={ref} />
+      </div>
+    );
+  }
+);
